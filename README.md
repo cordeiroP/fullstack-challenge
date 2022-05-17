@@ -19,13 +19,13 @@ Refera's Fullstack Code Challenge Project, aims to create an API and a web page,
 1st Open the terminal
 2nd Enter the following command: 
 ```
-+ git clone https://github.com/cordeiroP/fullstack-challenge.git
+ git clone https://github.com/cordeiroP/fullstack-challenge.git
 ```
 
 ## Install dependencies
 
 ```
-- composer update
+ composer update
 ```
 ## Env.
 
@@ -50,8 +50,8 @@ Refera's Fullstack Code Challenge Project, aims to create an API and a web page,
 - In the .env file we put the settings of the specific environment that we are going to run the application. In a production environment, two items in this file must be changed for application security:
 
 ```
-+ APP_ENV=production
-+ APP_DEBUG=false
+ APP_ENV=production
+ APP_DEBUG=false
 ```
 ##Installing the dependencies
 - When cloning the application to our production server, the first thing we need to do is run composer to download the project's dependencies. When we are in production we can pass two extra parameters, see how the command looks like:
