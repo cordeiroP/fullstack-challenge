@@ -2,47 +2,139 @@
 
 ## Description
 
-Welcome to Refera's Fullstack code challenge! The goal of this challenge is to create a web application to manage maintanence orders from Refera, following the **Acceptance criteria**. The frontend of application has only one page and the backend contains a simple REST API service and has a connection with a database. By the end of the challenge, we will be able to create new orders and list them through the web application that comunicates with our backend service to read and store the data in a database.
-
-We use React and Django in our real application, feel comfortable to chose the appropriate technology you are familiar with. Elaborate briefly the architectural decisions, design patterns and frameworks you used on your solution.
+Refera's Fullstack Code Challenge Project, aims to create an API and a web page, which allows a user to register, list and view the details of a retirement request.
 
 
-## Resources
 
-![image](https://user-images.githubusercontent.com/10841710/141149769-d2bef978-7073-4ac7-b0af-6c0c8c7b6fe8.png)
+## Running the application: development mode
+
+### Prerequisites
+
+- PHP >=7
+- composer
+- shampoo
+
+### Cloning the project
+
+1st Open the terminal
+2nd Enter the following command: + git clone https://github.com/cordeiroP/fullstack-challenge.git
+
+## Install dependencies
+
+- composer update
+
+## Env.
+
+-Inside the .Env file, you must change the username and password of the DBMS.
+ 
+### migrations
+- Before executing the microcrations, you must create the database (mysql), with the name "refera".
+- After opening the project (being inside the project directory), enter the following command from the terminal: + php artisan migrate
+
+### Running the services
+
+(Optional) Create a new Python environment
+
+```
+python3 -m venv fullstack-challenge-env
+fullstack-challenge-env/bin/activate source
+```
 
 
-## Acceptance criteria
+### Running the server: Production environment
 
-- Provide clear instructions on how to run the application in development mode
-- Provide clear instructions on how the application would run in a production environment
-- Describe how you would implement an authentication layer for the web application (don't need to implement)
-- RESTful API allowing CRUD and list operations on the orders
-  - Endpoint to create/retrieve/update/delete order
-  - Endpoint to list order
-- RESTful API allowing CRUD operations on the categories
-  - Endpoint to create/retrieve/update/delete category
-  - Endpoint to list categories
-- Database to store data from the following resources
-  - Order
-  - Category
-- Describe how you would structure the database to account for 
-  - Real estate agency registration data
-  - Company registration data
-  - Contact registration data
-  - Describe what needs to be changed on the API you implemented
-- One web page, following the low fidelity prototype presented on the **Resources**
-  - Table with orders data, allowing the user to order the results by each column
-  - Button to open modal to create new order
-  - Allow row click to open modal to visualize order details
-- Modal to input data to create new order
-  - Form with appropriate inputs to handle each type of data
-  - Allow selection of registered categories from the database
-  - Save button to hit backend service and store the data
-- Modal to read only the order details
+##Configuring the .env
+- In the .env file we put the settings of the specific environment that we are going to run the application. In a production environment, two items in this file must be changed for application security:
 
-## Additional Information
++ APP_ENV=production
++ APP_DEBUG=false
 
-- The usage of git will be taken into consideration on the evaluation
-- Fork this repository to your github account to submit your code
-- All the written information requested on **Acceptance criteria** should be added on a README.md file inside the repository
+##Installing the dependencies
+- When cloning the application to our production server, the first thing we need to do is run composer to download the project's dependencies. When we are in production we can pass two extra parameters, see how the command looks like:
+
++ composer install --optimize-autoload --no-dev
+
+## Caching configuration files
+
++ php artisan config:cache
+
+## Caching the routes
+
++ php artisan route:cache
+
+### Authentication
+
+For authentication, one of the alternatives is the creation of a user table with the necessary fields, and a login page
+where the user must provide the credentials to have access to the application.
+Having the JWT configured in our API, (JSON Web Token) is a data transfer system that can be sent via POST or in an HTTP header (header) in a “secure” way, this information is digitally signed by an HMAC algorithm, or a public/private key pair using RSA, significantly increasing the security of our application.
+After that, we could implement a middleware layer to verify user credentials for
+all the pages you need.
+
+### Additional database structure
+
+#### Registration data of the real estate agency
+
+Model changes:
+
+- New table to store real estate agency data
+- Update the order template to include an FK for RealEstateAgency
+
+```
++ Real estate agency:
++ name: chain
++ phone: string
++ address: string
++ national_registry: string
+
+Request:
+- agency: string
++ agency: FK for RealEstateAgency
+```
+
+Other updates: Update the order serializer and endpoint to traverse the RealEstateAgency.
+#### Company registration data
+
+Model changes:
+
+- New table to store company data
+- Update the order template to include an FK for the company
+
+```
++ Company:
++ name: chain
++ phone: string
++ address: string
++ national_registry: string
+
+Request:
+- company: chain
++ company: FK for Company
+```
+
+Other updates: Update the order serializer and endpoint to traverse the enterprise.
+
+#### Contact record data
+
+Model changes:
+
+- New table to store contact data
+- Update the order template to include a contact FK
+
+```
+Contact:
+first_name: string
+last_name: string
+email: chain
+username: string
+password: string
+phone: rope
+address: chain
+identity_number: string
+
+Request:
+- contact_name: string
+- contact_phone: string
++ contact: FK for contact
+```
+
+Other updates: Serializer and update request endpoint to cross contact.
