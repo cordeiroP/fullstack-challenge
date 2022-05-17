@@ -1,12 +1,12 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => 'v8.1.2',
-    'version' => '8.1.2.0',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '80a42de180cdb76eb704c019e8ce601862eaf025',
     'name' => 'laravel/lumen',
   ),
   'versions' => 
@@ -349,12 +349,12 @@
     ),
     'laravel/lumen' => 
     array (
-      'pretty_version' => 'v8.1.2',
-      'version' => '8.1.2.0',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '80a42de180cdb76eb704c019e8ce601862eaf025',
     ),
     'laravel/lumen-framework' => 
     array (
@@ -606,8 +606,8 @@
     array (
       'provided' => 
       array (
-        0 => '1.0|2.0',
-        1 => '1.0.0 || 2.0.0 || 3.0.0',
+        0 => '1.0.0 || 2.0.0 || 3.0.0',
+        1 => '1.0|2.0',
       ),
     ),
     'psr/simple-cache' => 

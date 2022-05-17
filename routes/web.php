@@ -21,7 +21,7 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
 });
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return redirect()->route('refera');
 });
 
 $router->group([
@@ -46,9 +46,7 @@ $router->post('registerCategory',[
 $router->group([
     "prefix" => "refera"
 ], function () use ($router) {
-    $router->get('/admin', function () use ($router) {
-        return $router->app->version();
-    });
+    
     $router->post('registerCategory',[
         'as' => 'category', 'uses' => 'CategoryController@category'
     ]);
@@ -61,7 +59,9 @@ $router->group([
 $router->group([
     "prefix" => "refera"
 ], function () use ($router) {
-    $router->get('/','OrderController@home');
+    
+    $router->get('/',[
+        'as' => 'refera', 'uses' => 'OrderController@home']);
     $router->post('registerOrder', 'OrderController@order');
     $router->get('listOrder', 'OrderController@listOrder');
     $router->delete('destroyOrder/{id}', 'OrderController@destroyOrder');

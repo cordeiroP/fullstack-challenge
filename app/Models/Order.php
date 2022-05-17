@@ -33,7 +33,7 @@ class Order extends Model
 
 
     protected $fillable = [
-        "contactName","contactPhone","realState","description","company","category_id"
+        "contactName","contactPhone","realState","description","company","category_id","deadline"
     ];
 
     protected $casts=[

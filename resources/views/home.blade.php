@@ -19,7 +19,7 @@
 <div class="container">
     <div>
         <br><br><br>
-        <button type="button" class="btn btn-secondary" id="myBtn">Open new order</button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"id="myBtn">Open new order</button>
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
@@ -73,8 +73,8 @@
 
 
                               <div class="form-group col-md-3">
-                                <label for="inputCity">Deadline</label>
-                                <input type="date" class="form-control" id="inputCity">
+                                <label for="inputDeadline">Deadline</label>
+                                <input type="date" name="deadline" class="form-control" id="inputDeadline">
                               </div>
 
                             </div>
@@ -195,15 +195,9 @@
 </div>
 <script>
     $(document).ready(function(){
-      $("#myBtn").click(function(){
-        $("#myModal").modal({backdrop: true});
-      });
-      $("#myBtn1").click(function(){
-        $("#myModal").modal({backdrop: true});
-      });
       $('#example').DataTable({
         order: [[3, 'desc']],
-    });
+      });
 
     });
     </script>

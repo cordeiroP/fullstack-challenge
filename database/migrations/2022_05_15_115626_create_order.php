@@ -16,12 +16,12 @@ class CreateOrder extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('contactName',100);
-            $table->integer('contactPhone');
+            $table->bigInteger('contactPhone');
             $table->String('realState',100);
             $table->String('description');
             $table->String('company',100);
             $table->unsignedBigInteger('category_id');
-            $table->timestamp('deadline',3);
+            $table->date('deadline');
             $table->timestamps();
         });
         Schema::table('order', function (Blueprint $table) {

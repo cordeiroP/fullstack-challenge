@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Category;
 
 class CreateCategory extends Migration
 {
@@ -19,7 +20,11 @@ class CreateCategory extends Migration
             $table->timestamps();
         //
         });
-
+        
+        Category::create(['name'=>'Hidráulica']);
+        Category::create(['name'=>'Eléctrica']);
+        Category::create(['name'=>'Arquitetónica']);
+        Category::create(['name'=>'Detetização']);
     }
 
     /**

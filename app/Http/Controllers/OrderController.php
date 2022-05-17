@@ -34,7 +34,8 @@ class OrderController extends Controller
                 'contactPhone'=>'required|integer',
                 'realState'=>'required|string|min:5|max:100',
                 'description'=>'required|string|min:10',
-                'company'=>'required|string|min:5||max:100'
+                'company'=>'required|string|min:5||max:100',
+                'deadline'=>'required|date'
             ]
         );
 
@@ -44,7 +45,7 @@ class OrderController extends Controller
             try {
                 //register order
                 $this->createOrder($request);
-                return $this->home();
+                return redirect()->route('refera');
                 //return response()->json(['order create sucess '], Response::HTTP_CREATED);
             } catch (QueryException $exception) {
                 return response()->json(['error' => 'erro de conexão com a base de dados ' . $exception], Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -74,6 +75,7 @@ class OrderController extends Controller
             $order->description = $request["description"];
             $order->company=$request["company"];
             $order->category_id=$request["category"];
+            $order->deadline=$request["deadline"];
 
             $order->save();
 
@@ -112,7 +114,7 @@ class OrderController extends Controller
     public function home(){
         $query['orders'] = DB::table('order')
              ->join('category', 'category.id', '=', 'order.category_id')
-             ->get(['order.id as id','order.contactName','order.description', 'order.contactPhone','order.contactPhone','order.realState','order.company','order.created_at as deadline','category.name as category']);
+             ->get(['order.id as id','order.contactName','order.description', 'order.contactPhone','order.contactPhone','order.realState','order.company','order.deadline','category.name as category']);
             // ->get();
             $category['category'] = Category::all();
              //dd($query['orders']);
