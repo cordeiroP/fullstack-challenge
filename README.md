@@ -17,12 +17,16 @@ Refera's Fullstack Code Challenge Project, aims to create an API and a web page,
 ### Cloning the project
 
 1st Open the terminal
-2nd Enter the following command: + git clone https://github.com/cordeiroP/fullstack-challenge.git
+2nd Enter the following command: 
+```
++ git clone https://github.com/cordeiroP/fullstack-challenge.git
+```
 
 ## Install dependencies
 
+```
 - composer update
-
+```
 ## Env.
 
 -Inside the .Env file, you must change the username and password of the DBMS.
@@ -36,8 +40,7 @@ Refera's Fullstack Code Challenge Project, aims to create an API and a web page,
 (Optional) Create a new Python environment
 
 ```
-python3 -m venv fullstack-challenge-env
-fullstack-challenge-env/bin/activate source
+ php -S localhost:8000 -t public
 ```
 
 
@@ -46,9 +49,10 @@ fullstack-challenge-env/bin/activate source
 ##Configuring the .env
 - In the .env file we put the settings of the specific environment that we are going to run the application. In a production environment, two items in this file must be changed for application security:
 
+```
 + APP_ENV=production
 + APP_DEBUG=false
-
+```
 ##Installing the dependencies
 - When cloning the application to our production server, the first thing we need to do is run composer to download the project's dependencies. When we are in production we can pass two extra parameters, see how the command looks like:
 
@@ -56,11 +60,15 @@ fullstack-challenge-env/bin/activate source
 
 ## Caching configuration files
 
+```
 + php artisan config:cache
+```
 
 ## Caching the routes
 
+```
 + php artisan route:cache
+```
 
 ### Authentication
 
